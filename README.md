@@ -1,34 +1,47 @@
 # Record Label Event Extraction and Visualization
 
 This repository contains the full workflow of my master's research project, which applies **Natural Language Processing (NLP)** techniques to crowdsourced music industry data from **Discogs**.  
-The project builds an automated pipeline for extracting structured historical events from free-text label descriptions and provides an **interactive dashboard** for analysis.
+The goal is to automatically extract historical events from record label profiles and provide an **interactive dashboard** for exploration.
 
-## Project Objectives
-- Extract record label historical events (Founded, Merged, Discontinued, Renamed) from large-scale Discogs data.
-- Construct structured company timelines with confidence scores and temporal normalization.
-- Build an interactive visualization system for researchers and potential industry investors.
+---
 
-## Components
-- **NLP Pipeline (spaCy 3.x + custom rules)**  
-  - Data cleaning and normalization  
-  - Entity recognition (label names, time expressions)  
-  - Relation extraction (dependency parsing + pattern matching)  
-  - Timeline construction and conflict resolution  
+## Repository Structure
 
-- **Dashboard (Streamlit + Plotly)**  
-  - Upload CSV/Parquet datasets  
-  - KPI cards (Total companies, Active companies, Average lifespan, Total events)  
-  - Event trends line/area charts  
-  - Heatmap of industry evolution (year, 5-year, 10-year groupings)  
-  - Top companies ranking table with download option  
-  - Data explorer with search and export  
+- **`business_dashboard.py`**  
+  Streamlit application for interactive visualization of timeline events.  
+  Provides KPI cards, trend charts, heatmaps, top companies, and a searchable data explorer.
+
+- **`research_on_ds.ipynb`**  
+  Jupyter Notebook that implements the NLP pipeline (based on spaCy and custom rules).  
+  Includes data preprocessing, entity recognition, relation extraction, and timeline construction.
+
+- **`timeline_events.zip`**  
+  Pre-processed dataset of extracted events.  
+  This file can be directly uploaded into the Streamlit dashboard for visualization.
+
+---
+
+## Features
+- **Event Extraction**: Founded, Merged, Discontinued, Renamed events from free-text profiles.
+- **Timeline Construction**: Normalization of years, decades, and ranges with confidence scores.
+- **Interactive Dashboard**:
+  - Upload CSV/Parquet event datasets
+  - KPI indicators (Total companies, Active companies, Average lifespan, Total events)
+  - Event trend line/area/stacked charts
+  - Industry evolution heatmap (year / 5-year / 10-year groupings)
+  - Top companies ranking table with export option
+  - Raw data explorer with search and download
+
+---
 
 ## Dataset
-- Source: **Discogs monthly XML data dump (May 2025)**  
-- Size: 2.43 million record labels worldwide  
-- Main analysis field: `profile` (free-text historical descriptions)
+- **Source**: [Discogs official data dump (Feb 2025)](https://discogs-data-dumps.s3-us-west-2.amazonaws.com/data/2025/discogs_20250201_labels.xml.gz)  
+- **Scale**: 2.43 million record labels worldwide  
+- **Focus Field**: `profile` (user-contributed free-text label descriptions)
 
-## ⚙Installation
+---
+
+## Installation
 ```bash
 git clone https://github.com/your-username/record-label-event-extraction.git
 cd record-label-event-extraction
